@@ -124,7 +124,7 @@ header.site{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding: 16px 24px;
+  padding: 0 24px;
   gap: 20px;
 }
 
@@ -139,7 +139,7 @@ header.site{
   text-decoration: none;
   white-space: nowrap;
 }
-.logo-mark{ width: 84px; height: 42px; flex-shrink: 0; }
+.logo-mark{ width: 172px; height: auto; flex-shrink: 0; }
 .logo span{ color: var(--text-dim); font-weight: 500; }
 
 .nav-links{
@@ -1581,6 +1581,8 @@ footer.site{
   font-size: 13.5px;
 }
 .footer-grid a{ text-decoration:none; color: var(--white); font-weight: 500; }
+.footer-mark{ display:flex; justify-content:center; margin-bottom: 14px; }
+.footer-mark-img{ width: 60px; height: auto; mix-blend-mode: screen; }
 
 .float-wa{
   position: fixed;
@@ -2097,4 +2099,118 @@ footer.site{
   .hero-stats .label{ font-size: 10px; }
   .models-grid > .model-card,
   .home-rep-grid > .repuesto-card{ flex-basis: 46%; }
+}
+
+/* ======================================================
+   MODO SUPER SAIYAJIN (SSJ / SSJ2)
+   Paleta de fuego del logo (reemplaza el verde WhatsApp) +
+   títulos en oro con resplandor + CTAs con pulso de ki.
+   Siempre activo vía <body class="ssj"> en app/layout.tsx.
+   ====================================================== */
+:root{
+  --accent: #F5B21F;
+  --accent-dark: #E0741A;
+  --accent-soft: rgba(245, 178, 31, 0.14);
+  --border: rgba(245, 178, 31, 0.16);
+  --border-strong: rgba(245, 178, 31, 0.36);
+  --surface: #0B0705;
+  --surface-2: #151009;
+  --bg: #000000;
+  --bg-alt: #050302;
+
+  --ol-carmesi: #C0261B;
+  --ol-fuego: #FF5500;
+  --ol-oro: #FFCC00;
+  --ol-glow: 1;
+}
+
+h1, h2, h3, .display{
+  color: var(--ol-oro);
+  transition: color .35s ease, text-shadow .35s ease;
+  text-shadow:
+    0 0 calc(18px * var(--ol-glow)) rgba(255, 85, 0, .75),
+    0 2px 0 rgba(192, 38, 27, .9),
+    0 0 calc(46px * var(--ol-glow)) rgba(255, 204, 0, .45);
+}
+
+/* "1000 kilos" del hero: blanco con el aura pulsante SSJ2 (igual que el nav), sin el glow dorado del título */
+body.ssj .hero h1 .faint{
+  color: #fff;
+  animation: olKiPulseWhite 2.6s ease-in-out infinite;
+}
+
+/* Eyebrow del hero ("Toritos eléctricos de carga · Chile"): mismo aura SSJ2 */
+body.ssj .hero-eyebrow{
+  color: #fff;
+  animation: olKiPulseWhite 2.6s ease-in-out infinite;
+}
+
+/* Párrafo lead del hero: mismo aura SSJ2 */
+body.ssj .hero p.lead{
+  color: #fff;
+  animation: olKiPulseWhite 2.6s ease-in-out infinite;
+}
+
+/* Hero de /modelos y /repuestos: mismo aura SSJ2 que el landing */
+body.ssj .rep-eyebrow,
+body.ssj .rep-hero-h1 .faint,
+body.ssj .rep-hero-lead{
+  color: #fff;
+  animation: olKiPulseWhite 2.6s ease-in-out infinite;
+}
+
+/* SSJ2: enlaces del header en blanco con aura pulsante */
+@keyframes olKiPulseWhite{
+  0%, 100%{ text-shadow: 0 0 10px rgba(255,255,255,.7), 0 0 26px rgba(255,255,255,.3); }
+  50%{ text-shadow: 0 0 18px rgba(255,255,255,.95), 0 0 46px rgba(255,255,255,.5); }
+}
+body.ssj .nav-links a,
+body.ssj .nav-right a:not(.nav-cta),
+body.ssj .nav-right .linklike{
+  color: #FFFFFF;
+  animation: olKiPulseWhite 2.6s ease-in-out infinite;
+}
+body.ssj .nav-links a:hover,
+body.ssj .nav-right a:not(.nav-cta):hover,
+body.ssj .nav-right .linklike:hover{
+  color: #FFFFFF;
+  animation-duration: 1s;
+}
+
+/* SSJ: CTAs de WhatsApp/acción en degradado oro→naranja con pulso de ki */
+@keyframes olKiPulse{
+  0%, 100%{ box-shadow: 0 0 12px rgba(255,85,0,.55), 0 0 30px rgba(255,204,0,.25); }
+  50%{ box-shadow: 0 0 22px rgba(255,85,0,.85), 0 0 54px rgba(255,204,0,.45); }
+}
+body.ssj .btn-primary,
+body.ssj .form-submit,
+body.ssj .nav-cta,
+body.ssj .float-wa{
+  background: linear-gradient(180deg, #FFCC00, #FF5500);
+  color: #1A0A00;
+  border-color: rgba(255, 204, 0, .5);
+  text-shadow: 0 1px 0 rgba(255, 235, 150, .55);
+  animation: olKiPulse 2.4s ease-in-out infinite;
+}
+body.ssj .btn-primary:hover,
+body.ssj .form-submit:hover,
+body.ssj .nav-cta:hover,
+body.ssj .float-wa:hover{
+  background: linear-gradient(180deg, #FFE066, #FF7A1A);
+  animation-duration: 1s;
+}
+
+/* CTA ghost del hero ("Ver modelos y precios"): contorno oro, sin relleno */
+body.ssj .hero .btn-ghost{
+  color: var(--ol-oro);
+  border-color: rgba(255, 204, 0, .55);
+  text-shadow: 0 0 14px rgba(255, 85, 0, .6);
+  animation: olKiPulse 3s ease-in-out infinite;
+}
+body.ssj .hero .btn-ghost:hover{ border-color: var(--ol-oro); }
+
+/* Enlace de WhatsApp del footer: solo brillo, sin píldora */
+body.ssj footer a[href*="wa.me"]{
+  color: var(--ol-oro);
+  text-shadow: 0 0 14px rgba(255, 85, 0, .6);
 }

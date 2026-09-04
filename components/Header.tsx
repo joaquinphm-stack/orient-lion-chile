@@ -26,10 +26,10 @@ export default async function Header() {
       <div className="nav container">
         <Link href="/" className="logo">
           <Image
-            src="/logo.png"
+            src="/logo-orientlion.png"
             alt="Orient Lion"
-            width={356}
-            height={178}
+            width={1549}
+            height={501}
             className="logo-mark"
             priority
           />

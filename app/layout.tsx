@@ -51,7 +51,7 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="ssj">
         <Header />
         {children}
         <Footer />

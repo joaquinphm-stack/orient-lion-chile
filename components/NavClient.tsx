@@ -123,14 +123,6 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
             <Link href="/registro">Crear cuenta</Link>
           </>
         )}
-        <a
-          className="nav-cta"
-          href={waLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Cotizar
-        </a>
       </div>
 
       <button
