@@ -16,6 +16,7 @@ import {
   storageImg,
   type Color,
   type Product,
+  type ProductTipo,
   type Spec,
 } from "@/lib/types";
 
@@ -38,9 +39,11 @@ const COLORES_NUEVOS: Color[] = [
   { nombre: "Negro", hex: "#111111", imagenes: [] },
 ];
 
-type Props = { products: Product[]; isAdmin: boolean };
+type Props = { products: Product[]; isAdmin: boolean; tipo?: ProductTipo };
 
-export default function ModelosClient({ products, isAdmin }: Props) {
+export default function ModelosClient({ products, isAdmin, tipo = "torito" }: Props) {
+  const esOtro = tipo === "otro";
+  const sustantivo = esOtro ? "vehículo" : "torito";
   const [rows, setRows] = useState<Product[]>(products);
   const [msg, setMsg] = useState("");
   const [busyId, setBusyId] = useState<string | null>(null);
@@ -103,7 +106,7 @@ export default function ModelosClient({ products, isAdmin }: Props) {
             className="rep-add"
             onClick={() => setDrawer({ mode: "new" })}
           >
-            + Agregar torito
+            + Agregar {sustantivo}
           </button>
         </div>
       )}
@@ -141,6 +144,7 @@ export default function ModelosClient({ products, isAdmin }: Props) {
         <Drawer
           key={drawer.mode === "edit" ? drawer.row.id : "new"}
           state={drawer}
+          tipo={tipo}
           nextOrden={rows.reduce((max, p) => Math.max(max, p.orden), 0) + 1}
           onClose={() => setDrawer(null)}
           onSaved={(row, mode) => {
@@ -155,7 +159,7 @@ export default function ModelosClient({ products, isAdmin }: Props) {
           onDeleted={(id) => {
             setRows((rs) => rs.filter((x) => x.id !== id));
             setDrawer(null);
-            flash("Torito eliminado");
+            flash(esOtro ? "Vehículo eliminado" : "Torito eliminado");
           }}
           flash={flash}
         />
@@ -169,6 +173,7 @@ export default function ModelosClient({ products, isAdmin }: Props) {
 /* ---------------- Drawer de ficha ---------------- */
 function Drawer({
   state,
+  tipo,
   nextOrden,
   onClose,
   onSaved,
@@ -176,18 +181,21 @@ function Drawer({
   flash,
 }: {
   state: { mode: "edit"; row: Product } | { mode: "new" };
+  tipo: ProductTipo;
   nextOrden: number;
   onClose: () => void;
   onSaved: (row: Product, mode: "edit" | "new") => void;
   onDeleted: (id: string) => void;
   flash: (m: string) => void;
 }) {
+  const esOtro = tipo === "otro";
   const base: Product =
     state.mode === "edit"
       ? state.row
       : {
           id: "",
           nombre: "",
+          tipo,
           capacidad_kg: 0,
           precio: 0,
           precio_nota: "Precio con IVA incluido",
@@ -260,6 +268,7 @@ function Drawer({
     const input: ProductInput = {
       id: state.mode === "new" ? slug || slugify(f.nombre) : f.id,
       nombre: f.nombre.trim(),
+      tipo: f.tipo,
       capacidad_kg: f.capacidad_kg,
       precio: f.precio,
       precio_nota: f.precio_nota.trim(),
@@ -299,7 +308,15 @@ function Drawer({
       <div className="rep-drawer-scrim" onClick={onClose} />
       <div className="rep-drawer">
         <div className="rep-drawer-head">
-          <strong>{state.mode === "new" ? "Nuevo torito" : "Editar torito"}</strong>
+          <strong>
+            {state.mode === "new"
+              ? esOtro
+                ? "Nuevo vehículo"
+                : "Nuevo torito"
+              : esOtro
+                ? "Editar vehículo"
+                : "Editar torito"}
+          </strong>
           <button type="button" className="rep-drawer-x" onClick={onClose} aria-label="Cerrar">
             ✕
           </button>
@@ -324,7 +341,7 @@ function Drawer({
 
           <div className="rep-drawer-row">
             <label>
-              Capacidad (kg)
+              {esOtro ? "Autonomía (km)" : "Capacidad (kg)"}
               <input
                 type="number"
                 min={0}

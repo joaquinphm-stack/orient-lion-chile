@@ -1,9 +1,14 @@
 export type Spec = { label: string; value: string };
 export type Color = { nombre: string; hex: string; imagenes?: string[] };
 
+/** `torito` usa la placa "Modelo · N KILOS"; `otro` (scooter, bici, moto) usa
+ *  "Autonomía · N KM". Ver ProductCard. */
+export type ProductTipo = "torito" | "otro";
+
 export type Product = {
   id: string;
   nombre: string;
+  tipo: ProductTipo;
   capacidad_kg: number;
   precio: number;
   precio_nota: string;

@@ -1751,6 +1751,14 @@ footer.site{
 .models-admin-head{ display: flex; justify-content: flex-end; margin-bottom: 16px; }
 .model-card.is-hidden{ opacity: .5; }
 
+/* Sub-catálogo bajo los toritos: scooters, bicicletas y motos 49cc. Misma
+   grilla y tarjetas que los toritos (dimensiones sin cambios); solo cambia
+   el encabezado y el separador superior. */
+.models-sub{ margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.models-sub-head{ margin-bottom: 24px; }
+.models-sub-head h3{ font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+.models-sub-head p{ color: var(--text-dim); font-size: 14.5px; max-width: 640px; }
+
 /* Bloque de repuestos bajo los toritos: 3 + 3 */
 .home-repuestos{ margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
 .home-repuestos-head{
@@ -2047,6 +2055,9 @@ footer.site{
   .home-repuestos{ margin-top: 36px; padding-top: 28px; }
   .home-repuestos-head h3{ font-size: 18px; }
   .home-repuestos-head p{ font-size: 13.5px; }
+  .models-sub{ margin-top: 36px; padding-top: 28px; }
+  .models-sub-head h3{ font-size: 18px; }
+  .models-sub-head p{ font-size: 13.5px; }
 }
 
 /* Puntos de navegación del carrusel (solo móvil) */
@@ -2056,6 +2067,7 @@ footer.site{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: 14px;
   }

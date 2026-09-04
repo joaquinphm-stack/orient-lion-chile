@@ -68,7 +68,9 @@ export default async function Home() {
       .limit(6),
   ]);
 
-  const products = (productData ?? []) as Product[];
+  const allProducts = (productData ?? []) as Product[];
+  const toritos = allProducts.filter((p) => p.tipo !== "otro");
+  const otrosVehiculos = allProducts.filter((p) => p.tipo === "otro");
   const repuestos = (repuestoData ?? []) as Repuesto[];
 
   return (
@@ -223,7 +225,24 @@ export default async function Home() {
             </p>
           </div>
 
-          <ModelosClient products={products} isAdmin={isAdmin} />
+          <ModelosClient products={toritos} isAdmin={isAdmin} />
+
+          {(otrosVehiculos.length > 0 || isAdmin) && (
+            <div className="models-sub">
+              <div className="models-sub-head">
+                <h3>Scooters, bicicletas y motos</h3>
+                <p>
+                  Movilidad eléctrica y motos 49cc con la misma compra: eliges el
+                  color, pagas al recibir y llega con factura.
+                </p>
+              </div>
+              <ModelosClient
+                products={otrosVehiculos}
+                isAdmin={isAdmin}
+                tipo="otro"
+              />
+            </div>
+          )}
 
           {repuestos.length > 0 && (
             <div className="home-repuestos">
