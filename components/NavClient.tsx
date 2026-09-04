@@ -5,7 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
-import { REPUESTO_CATEGORIAS, subAnchor, waLink } from "@/lib/types";
+import {
+  PRODUCT_CATEGORIAS,
+  REPUESTO_CATEGORIAS,
+  subAnchor,
+  waLink,
+} from "@/lib/types";
 
 type Props = {
   isLogged: boolean;
@@ -13,12 +18,33 @@ type Props = {
   nombre: string;
 };
 
-type Section = { href: string; label: string; mega?: boolean };
+type MegaCat = { id: string; nombre: string; subcategorias: string[] };
+type Section = {
+  href: string;
+  label: string;
+  mega?: { aria: string; base: string; cats: MegaCat[] };
+};
 
 const SECTIONS: Section[] = [
   { href: "/#servicios", label: "Servicios" },
-  { href: "/#modelos", label: "Modelos" },
-  { href: "/repuestos", label: "Repuestos", mega: true },
+  {
+    href: "/modelos",
+    label: "Modelos",
+    mega: {
+      aria: "Categorías de modelos",
+      base: "/modelos",
+      cats: PRODUCT_CATEGORIAS,
+    },
+  },
+  {
+    href: "/repuestos",
+    label: "Repuestos",
+    mega: {
+      aria: "Categorías de repuestos",
+      base: "/repuestos",
+      cats: REPUESTO_CATEGORIAS,
+    },
+  },
   { href: "/#testimonios", label: "Testimonios" },
   { href: "/#contacto", label: "Contacto" },
 ];
@@ -52,19 +78,19 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
           s.mega ? (
             <li key={s.href} className="nav-item has-mega">
               <Link href={s.href}>{s.label}</Link>
-              <div className="mega" role="menu" aria-label="Categorías de repuestos">
-                {REPUESTO_CATEGORIAS.map((cat) => (
+              <div className="mega" role="menu" aria-label={s.mega.aria}>
+                {s.mega.cats.map((cat) => (
                   <div className="mega-col" key={cat.id}>
                     <Link
                       className="mega-col-head"
-                      href={`/repuestos#cat-${cat.id}`}
+                      href={`${s.mega!.base}#cat-${cat.id}`}
                     >
                       {cat.nombre}
                     </Link>
                     <ul>
                       {cat.subcategorias.map((sub) => (
                         <li key={sub}>
-                          <Link href={`/repuestos#${subAnchor(cat.id, sub)}`}>
+                          <Link href={`${s.mega!.base}#${subAnchor(cat.id, sub)}`}>
                             {sub}
                           </Link>
                         </li>
@@ -138,12 +164,14 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
                 </div>
                 {acc === s.href && (
                   <div className="m-acc-body">
-                    {REPUESTO_CATEGORIAS.map((cat) => (
+                    {s.mega.cats.map((cat) => {
+                      const ck = `${s.href}:${cat.id}`;
+                      return (
                       <div className="m-acc-cat-group" key={cat.id}>
                         <div className="m-acc-row m-acc-cat-row">
                           <Link
                             className="m-acc-cat"
-                            href={`/repuestos#cat-${cat.id}`}
+                            href={`${s.mega!.base}#cat-${cat.id}`}
                             onClick={() => setOpen(false)}
                           >
                             {cat.nombre}
@@ -151,22 +179,22 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
                           <button
                             type="button"
                             className="m-acc-toggle m-acc-toggle-sm"
-                            aria-label={catAcc === cat.id ? "Contraer" : "Expandir"}
-                            aria-expanded={catAcc === cat.id}
+                            aria-label={catAcc === ck ? "Contraer" : "Expandir"}
+                            aria-expanded={catAcc === ck}
                             onClick={() =>
-                              setCatAcc((v) => (v === cat.id ? null : cat.id))
+                              setCatAcc((v) => (v === ck ? null : ck))
                             }
                           >
-                            {catAcc === cat.id ? "–" : "+"}
+                            {catAcc === ck ? "–" : "+"}
                           </button>
                         </div>
-                        {catAcc === cat.id && (
+                        {catAcc === ck && (
                           <div className="m-acc-subs">
                             {cat.subcategorias.map((sub) => (
                               <Link
                                 key={sub}
                                 className="m-acc-sub"
-                                href={`/repuestos#${subAnchor(cat.id, sub)}`}
+                                href={`${s.mega!.base}#${subAnchor(cat.id, sub)}`}
                                 onClick={() => setOpen(false)}
                               >
                                 {sub}
@@ -175,7 +203,8 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
                           </div>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>

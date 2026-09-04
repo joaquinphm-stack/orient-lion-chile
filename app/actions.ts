@@ -2,7 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
-import type { Color, ProductTipo, RepuestoCategoria, Spec } from "@/lib/types";
+import type {
+  Color,
+  ProductCategoria,
+  RepuestoCategoria,
+  Spec,
+} from "@/lib/types";
 
 type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -25,8 +30,9 @@ async function requireAdmin() {
 export type ProductInput = {
   id: string;
   nombre: string;
-  /** Opcional: si se omite, la fila conserva su `tipo` (o el default `torito`). */
-  tipo?: ProductTipo;
+  /** Opcionales: si se omiten, la fila conserva sus valores (default `torito` / ""). */
+  categoria?: ProductCategoria;
+  subcategoria?: string;
   capacidad_kg: number;
   precio: number;
   precio_nota: string;

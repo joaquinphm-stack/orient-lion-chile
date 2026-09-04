@@ -964,6 +964,8 @@ header.site{
 }
 .rep-q::placeholder{ color: var(--text-faint); }
 .rep-facets{ display: grid; grid-template-columns: 1fr; gap: 10px; }
+/* /modelos usa un solo filtro (categoría); no repartir en 3 columnas. */
+.mod-searchbar .rep-facets{ grid-template-columns: 1fr; flex: 0 1 240px; }
 .rep-facets select{
   width: 100%;
   min-height: var(--tap);

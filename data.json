@@ -1,0 +1,232 @@
+{
+  "_comment": "Semilla de referencia de los vehículos agregados al catálogo (scooters, bicicletas y motos 49cc). Los datos vivos están en Supabase (tabla `products`); el código NO lee este archivo. Las 3 imágenes por artículo son placeholders SVG en /public/modelos, compartidos por tipo hasta que se suban fotos reales desde el panel.",
+  "generado": "2026-09-04",
+  "productos": [
+    {
+      "id": "scooter-urbano-e1",
+      "nombre": "Scooter Eléctrico Urbano E1",
+      "categoria": "scooter",
+      "subcategoria": "Urbano E1",
+      "autonomia_km": 65,
+      "precio": 850000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 0,
+      "specs": [
+        { "label": "Autonomía por carga", "value": "65 km" },
+        { "label": "Velocidad máxima", "value": "45 km/h" },
+        { "label": "Motor", "value": "1.200 W brushless" },
+        { "label": "Batería", "value": "60 V 20 Ah, extraíble" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/scooter-1.svg",
+        "/modelos/scooter-2.svg",
+        "/modelos/scooter-3.svg"
+      ]
+    },
+    {
+      "id": "scooter-sport-e2",
+      "nombre": "Scooter Eléctrico Sport E2",
+      "categoria": "scooter",
+      "subcategoria": "Sport E2",
+      "autonomia_km": 85,
+      "precio": 1150000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": true,
+      "destacado_texto": "Más vendido",
+      "color_default": 3,
+      "specs": [
+        { "label": "Autonomía por carga", "value": "85 km" },
+        { "label": "Velocidad máxima", "value": "60 km/h" },
+        { "label": "Motor", "value": "2.000 W" },
+        { "label": "Batería", "value": "72 V 22 Ah, extraíble" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/scooter-1.svg",
+        "/modelos/scooter-2.svg",
+        "/modelos/scooter-3.svg"
+      ]
+    },
+    {
+      "id": "scooter-plus-e3",
+      "nombre": "Scooter Eléctrico Plus E3",
+      "categoria": "scooter",
+      "subcategoria": "Plus E3",
+      "autonomia_km": 110,
+      "precio": 1450000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 2,
+      "specs": [
+        { "label": "Autonomía por carga", "value": "110 km" },
+        { "label": "Velocidad máxima", "value": "65 km/h" },
+        { "label": "Motor", "value": "3.000 W" },
+        { "label": "Batería", "value": "72 V 32 Ah, doble batería" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/scooter-1.svg",
+        "/modelos/scooter-2.svg",
+        "/modelos/scooter-3.svg"
+      ]
+    },
+    {
+      "id": "bici-electrica-city",
+      "nombre": "Bicicleta Eléctrica City",
+      "categoria": "bicicleta",
+      "subcategoria": "City",
+      "autonomia_km": 55,
+      "precio": 520000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 0,
+      "specs": [
+        { "label": "Autonomía asistida", "value": "55 km" },
+        { "label": "Velocidad asistida", "value": "25 km/h" },
+        { "label": "Motor", "value": "350 W en rueda trasera" },
+        { "label": "Batería", "value": "36 V 12 Ah, extraíble" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/bici-1.svg",
+        "/modelos/bici-2.svg",
+        "/modelos/bici-3.svg"
+      ]
+    },
+    {
+      "id": "bici-electrica-cargo",
+      "nombre": "Bicicleta Eléctrica Cargo",
+      "categoria": "bicicleta",
+      "subcategoria": "Cargo",
+      "autonomia_km": 60,
+      "precio": 780000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": true,
+      "destacado_texto": "Para reparto",
+      "color_default": 1,
+      "specs": [
+        { "label": "Autonomía asistida", "value": "60 km" },
+        { "label": "Capacidad de carga", "value": "80 kg en parrilla delantera" },
+        { "label": "Motor", "value": "500 W" },
+        { "label": "Batería", "value": "48 V 15 Ah, extraíble" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/bici-1.svg",
+        "/modelos/bici-2.svg",
+        "/modelos/bici-3.svg"
+      ]
+    },
+    {
+      "id": "bici-electrica-fat",
+      "nombre": "Bicicleta Eléctrica Fat",
+      "categoria": "bicicleta",
+      "subcategoria": "Fat",
+      "autonomia_km": 70,
+      "precio": 690000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 2,
+      "specs": [
+        { "label": "Autonomía asistida", "value": "70 km" },
+        { "label": "Neumáticos", "value": "26 × 4.0 todo terreno" },
+        { "label": "Motor", "value": "750 W" },
+        { "label": "Batería", "value": "48 V 17 Ah, extraíble" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/bici-1.svg",
+        "/modelos/bici-2.svg",
+        "/modelos/bici-3.svg"
+      ]
+    },
+    {
+      "id": "moto-49cc-cub",
+      "nombre": "Moto 49cc Cub",
+      "categoria": "moto",
+      "subcategoria": "Cub",
+      "autonomia_km": 180,
+      "precio": 890000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 3,
+      "specs": [
+        { "label": "Autonomía por estanque", "value": "180 km" },
+        { "label": "Cilindrada", "value": "49 cc, 4 tiempos" },
+        { "label": "Transmisión", "value": "Semiautomática, 4 velocidades" },
+        { "label": "Estanque", "value": "4,3 litros" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/moto-1.svg",
+        "/modelos/moto-2.svg",
+        "/modelos/moto-3.svg"
+      ]
+    },
+    {
+      "id": "moto-49cc-trail",
+      "nombre": "Moto 49cc Trail",
+      "categoria": "moto",
+      "subcategoria": "Trail",
+      "autonomia_km": 160,
+      "precio": 990000,
+      "precio_nota": "Precio con IVA incluido",
+      "destacado": false,
+      "color_default": 0,
+      "specs": [
+        { "label": "Autonomía por estanque", "value": "160 km" },
+        { "label": "Cilindrada", "value": "49 cc, 4 tiempos" },
+        { "label": "Transmisión", "value": "Manual, 5 velocidades" },
+        { "label": "Estanque", "value": "5,5 litros" }
+      ],
+      "colores": [
+        { "nombre": "Azul", "hex": "#1F4FD8" },
+        { "nombre": "Turquesa", "hex": "#12B5B0" },
+        { "nombre": "Rojo", "hex": "#C23B22" },
+        { "nombre": "Negro", "hex": "#111111" }
+      ],
+      "imagenes": [
+        "/modelos/moto-1.svg",
+        "/modelos/moto-2.svg",
+        "/modelos/moto-3.svg"
+      ]
+    }
+  ]
+}

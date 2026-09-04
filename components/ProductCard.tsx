@@ -159,10 +159,10 @@ export default function ProductCard({
 
       <div className="model-plate">
         <span className="plate-label">
-          {product.tipo === "otro" ? "Autonomía" : "Modelo"}
+          {product.categoria === "torito" ? "Modelo" : "Autonomía"}
         </span>
         <span className="plate-value">
-          {product.capacidad_kg} {product.tipo === "otro" ? "KM" : "KILOS"}
+          {product.capacidad_kg} {product.categoria === "torito" ? "KILOS" : "KM"}
         </span>
       </div>
 

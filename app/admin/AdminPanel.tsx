@@ -12,9 +12,11 @@ import {
   type ProductInput,
 } from "@/app/actions";
 import {
+  PRODUCT_CATEGORIAS,
   storageImg,
   type Color,
   type Product,
+  type ProductCategoria,
   type Spec,
 } from "@/lib/types";
 import {
@@ -154,6 +156,8 @@ function ButtonAppearanceEditor({
 function ProductEditor({ product }: { product: Product }) {
   const router = useRouter();
   const [nombre, setNombre] = useState(product.nombre);
+  const [categoria, setCategoria] = useState<ProductCategoria>(product.categoria);
+  const [subcategoria, setSubcategoria] = useState(product.subcategoria ?? "");
   const [capacidad, setCapacidad] = useState(String(product.capacidad_kg));
   const [precio, setPrecio] = useState(String(product.precio));
   const [precioNota, setPrecioNota] = useState(product.precio_nota);
@@ -247,6 +251,8 @@ function ProductEditor({ product }: { product: Product }) {
     const input: ProductInput = {
       id: product.id,
       nombre: nombre.trim(),
+      categoria,
+      subcategoria: subcategoria.trim(),
       capacidad_kg: Number(capacidad) || 0,
       precio: Number(precio) || 0,
       precio_nota: precioNota.trim(),
@@ -299,7 +305,34 @@ function ProductEditor({ product }: { product: Product }) {
           <input value={nombre} onChange={(e) => setNombre(e.target.value)} />
         </div>
         <div className="admin-field">
-          <label>Capacidad (kg)</label>
+          <label>Categoría</label>
+          <select
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value as ProductCategoria)}
+          >
+            {PRODUCT_CATEGORIAS.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="admin-field">
+          <label>Modelo (subcategoría)</label>
+          <input
+            list={`admin-subcats-${product.id}`}
+            value={subcategoria}
+            onChange={(e) => setSubcategoria(e.target.value)}
+          />
+          <datalist id={`admin-subcats-${product.id}`}>
+            {(PRODUCT_CATEGORIAS.find((c) => c.id === categoria)?.subcategorias ??
+              []).map((s) => (
+              <option key={s} value={s} />
+            ))}
+          </datalist>
+        </div>
+        <div className="admin-field">
+          <label>{categoria === "torito" ? "Capacidad (kg)" : "Autonomía (km)"}</label>
           <input
             type="number"
             value={capacidad}
@@ -503,10 +536,14 @@ function NewProductForm({ nextOrden }: { nextOrden: number }) {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
+  const [categoria, setCategoria] = useState<ProductCategoria>("torito");
+  const [subcategoria, setSubcategoria] = useState("");
   const [capacidad, setCapacidad] = useState("");
   const [precio, setPrecio] = useState("");
   const [msg, setMsg] = useState<Msg>(null);
   const [busy, setBusy] = useState(false);
+
+  const esCarga = categoria === "torito";
 
   async function onCreate(e: React.FormEvent) {
     e.preventDefault();
@@ -515,11 +552,18 @@ function NewProductForm({ nextOrden }: { nextOrden: number }) {
     const input: ProductInput = {
       id: id || nombre,
       nombre: nombre.trim(),
+      categoria,
+      subcategoria: subcategoria.trim(),
       capacidad_kg: Number(capacidad) || 0,
       precio: Number(precio) || 0,
       precio_nota: "Precio con IVA incluido",
       specs: capacidad
-        ? [{ label: "Capacidad de carga", value: `${capacidad} kg` }]
+        ? [
+            {
+              label: esCarga ? "Capacidad de carga" : "Autonomía",
+              value: esCarga ? `${capacidad} kg` : `${capacidad} km`,
+            },
+          ]
         : [],
       colores: [
         { nombre: "Azul", hex: "#1F4FD8", imagenes: [] },
@@ -539,6 +583,8 @@ function NewProductForm({ nextOrden }: { nextOrden: number }) {
     if (res.ok) {
       setId("");
       setNombre("");
+      setCategoria("torito");
+      setSubcategoria("");
       setCapacidad("");
       setPrecio("");
       setOpen(false);
@@ -585,7 +631,35 @@ function NewProductForm({ nextOrden }: { nextOrden: number }) {
           />
         </div>
         <div className="admin-field">
-          <label>Capacidad (kg)</label>
+          <label>Categoría</label>
+          <select
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value as ProductCategoria)}
+          >
+            {PRODUCT_CATEGORIAS.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nombre}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="admin-field">
+          <label>Modelo (subcategoría)</label>
+          <input
+            list="admin-new-subcats"
+            value={subcategoria}
+            onChange={(e) => setSubcategoria(e.target.value)}
+            placeholder="ej: 1500 kg"
+          />
+          <datalist id="admin-new-subcats">
+            {(PRODUCT_CATEGORIAS.find((c) => c.id === categoria)?.subcategorias ??
+              []).map((s) => (
+              <option key={s} value={s} />
+            ))}
+          </datalist>
+        </div>
+        <div className="admin-field">
+          <label>{esCarga ? "Capacidad (kg)" : "Autonomía (km)"}</label>
           <input
             type="number"
             value={capacidad}

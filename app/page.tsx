@@ -69,8 +69,8 @@ export default async function Home() {
   ]);
 
   const allProducts = (productData ?? []) as Product[];
-  const toritos = allProducts.filter((p) => p.tipo !== "otro");
-  const otrosVehiculos = allProducts.filter((p) => p.tipo === "otro");
+  const toritos = allProducts.filter((p) => p.categoria === "torito");
+  const otrosVehiculos = allProducts.filter((p) => p.categoria !== "torito");
   const repuestos = (repuestoData ?? []) as Repuesto[];
 
   return (
@@ -223,6 +223,13 @@ export default async function Home() {
               Cada torito eléctrico está pensado para un volumen de trabajo
               distinto. Precios con IVA incluido.
             </p>
+            <Link
+              className="btn btn-light btn-sm"
+              href="/modelos"
+              style={{ marginTop: 16 }}
+            >
+              Ver todo el catálogo de modelos
+            </Link>
           </div>
 
           <ModelosClient products={toritos} isAdmin={isAdmin} />
@@ -239,7 +246,7 @@ export default async function Home() {
               <ModelosClient
                 products={otrosVehiculos}
                 isAdmin={isAdmin}
-                tipo="otro"
+                defaultCategoria="scooter"
               />
             </div>
           )}

@@ -12,11 +12,12 @@ import ProductCard from "@/components/ProductCard";
 import { createClient } from "@/lib/supabase/client";
 import { PRODUCT_IMAGES_BUCKET } from "@/lib/supabase/config";
 import {
+  PRODUCT_CATEGORIAS,
   slugify,
   storageImg,
   type Color,
   type Product,
-  type ProductTipo,
+  type ProductCategoria,
   type Spec,
 } from "@/lib/types";
 
@@ -39,11 +40,19 @@ const COLORES_NUEVOS: Color[] = [
   { nombre: "Negro", hex: "#111111", imagenes: [] },
 ];
 
-type Props = { products: Product[]; isAdmin: boolean; tipo?: ProductTipo };
+type Props = {
+  products: Product[];
+  isAdmin: boolean;
+  /** Categoría por defecto de los productos nuevos creados desde este bloque. */
+  defaultCategoria?: ProductCategoria;
+};
 
-export default function ModelosClient({ products, isAdmin, tipo = "torito" }: Props) {
-  const esOtro = tipo === "otro";
-  const sustantivo = esOtro ? "vehículo" : "torito";
+export default function ModelosClient({
+  products,
+  isAdmin,
+  defaultCategoria = "torito",
+}: Props) {
+  const sustantivo = defaultCategoria === "torito" ? "torito" : "vehículo";
   const [rows, setRows] = useState<Product[]>(products);
   const [msg, setMsg] = useState("");
   const [busyId, setBusyId] = useState<string | null>(null);
@@ -144,7 +153,7 @@ export default function ModelosClient({ products, isAdmin, tipo = "torito" }: Pr
         <Drawer
           key={drawer.mode === "edit" ? drawer.row.id : "new"}
           state={drawer}
-          tipo={tipo}
+          defaultCategoria={defaultCategoria}
           nextOrden={rows.reduce((max, p) => Math.max(max, p.orden), 0) + 1}
           onClose={() => setDrawer(null)}
           onSaved={(row, mode) => {
@@ -159,7 +168,7 @@ export default function ModelosClient({ products, isAdmin, tipo = "torito" }: Pr
           onDeleted={(id) => {
             setRows((rs) => rs.filter((x) => x.id !== id));
             setDrawer(null);
-            flash(esOtro ? "Vehículo eliminado" : "Torito eliminado");
+            flash("Modelo eliminado");
           }}
           flash={flash}
         />
@@ -173,7 +182,7 @@ export default function ModelosClient({ products, isAdmin, tipo = "torito" }: Pr
 /* ---------------- Drawer de ficha ---------------- */
 function Drawer({
   state,
-  tipo,
+  defaultCategoria,
   nextOrden,
   onClose,
   onSaved,
@@ -181,21 +190,21 @@ function Drawer({
   flash,
 }: {
   state: { mode: "edit"; row: Product } | { mode: "new" };
-  tipo: ProductTipo;
+  defaultCategoria: ProductCategoria;
   nextOrden: number;
   onClose: () => void;
   onSaved: (row: Product, mode: "edit" | "new") => void;
   onDeleted: (id: string) => void;
   flash: (m: string) => void;
 }) {
-  const esOtro = tipo === "otro";
   const base: Product =
     state.mode === "edit"
       ? state.row
       : {
           id: "",
           nombre: "",
-          tipo,
+          categoria: defaultCategoria,
+          subcategoria: "",
           capacidad_kg: 0,
           precio: 0,
           precio_nota: "Precio con IVA incluido",
@@ -215,6 +224,8 @@ function Drawer({
   const [slug, setSlug] = useState(state.mode === "new" ? "" : base.id);
   const [pending, start] = useTransition();
   const [uploading, setUploading] = useState(false);
+  const esCarga = f.categoria === "torito";
+  const cat = PRODUCT_CATEGORIAS.find((c) => c.id === f.categoria);
 
   const set = <K extends keyof Product>(key: K, v: Product[K]) =>
     setF((p) => ({ ...p, [key]: v }));
@@ -268,7 +279,8 @@ function Drawer({
     const input: ProductInput = {
       id: state.mode === "new" ? slug || slugify(f.nombre) : f.id,
       nombre: f.nombre.trim(),
-      tipo: f.tipo,
+      categoria: f.categoria,
+      subcategoria: f.subcategoria.trim(),
       capacidad_kg: f.capacidad_kg,
       precio: f.precio,
       precio_nota: f.precio_nota.trim(),
@@ -309,13 +321,7 @@ function Drawer({
       <div className="rep-drawer">
         <div className="rep-drawer-head">
           <strong>
-            {state.mode === "new"
-              ? esOtro
-                ? "Nuevo vehículo"
-                : "Nuevo torito"
-              : esOtro
-                ? "Editar vehículo"
-                : "Editar torito"}
+            {state.mode === "new" ? "Nuevo modelo" : "Editar modelo"}
           </strong>
           <button type="button" className="rep-drawer-x" onClick={onClose} aria-label="Cerrar">
             ✕
@@ -341,7 +347,38 @@ function Drawer({
 
           <div className="rep-drawer-row">
             <label>
-              {esOtro ? "Autonomía (km)" : "Capacidad (kg)"}
+              Categoría
+              <select
+                value={f.categoria}
+                onChange={(e) =>
+                  set("categoria", e.target.value as ProductCategoria)
+                }
+              >
+                {PRODUCT_CATEGORIAS.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.nombre}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Modelo (subcategoría)
+              <input
+                list="modelos-subcats"
+                value={f.subcategoria}
+                onChange={(e) => set("subcategoria", e.target.value)}
+              />
+              <datalist id="modelos-subcats">
+                {(cat?.subcategorias ?? []).map((s) => (
+                  <option key={s} value={s} />
+                ))}
+              </datalist>
+            </label>
+          </div>
+
+          <div className="rep-drawer-row">
+            <label>
+              {esCarga ? "Capacidad (kg)" : "Autonomía (km)"}
               <input
                 type="number"
                 min={0}

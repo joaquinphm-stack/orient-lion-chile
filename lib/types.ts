@@ -1,14 +1,15 @@
 export type Spec = { label: string; value: string };
 export type Color = { nombre: string; hex: string; imagenes?: string[] };
 
-/** `torito` usa la placa "Modelo · N KILOS"; `otro` (scooter, bici, moto) usa
- *  "Autonomía · N KM". Ver ProductCard. */
-export type ProductTipo = "torito" | "otro";
+/** `torito` usa la placa "Modelo · N KILOS"; el resto usa "Autonomía · N KM".
+ *  Ver ProductCard y PRODUCT_CATEGORIAS. */
+export type ProductCategoria = "torito" | "scooter" | "bicicleta" | "moto";
 
 export type Product = {
   id: string;
   nombre: string;
-  tipo: ProductTipo;
+  categoria: ProductCategoria;
+  subcategoria: string;
   capacidad_kg: number;
   precio: number;
   precio_nota: string;
@@ -23,6 +24,44 @@ export type Product = {
   created_at: string;
   updated_at: string;
 };
+
+/** Categorías y modelos (subcategorías) del catálogo de vehículos. Misma forma
+ *  que REPUESTO_CATEGORIAS: alimenta el mega-menú, /modelos y sus anclas. */
+export const PRODUCT_CATEGORIAS: {
+  id: ProductCategoria;
+  nombre: string;
+  detalle: string;
+  subcategorias: string[];
+}[] = [
+  {
+    id: "torito",
+    nombre: "Toritos de carga",
+    detalle:
+      "Triciclos eléctricos de carga de 500, 800 y 1000 kilos, con tolva y pago contra entrega.",
+    subcategorias: ["500 kg", "800 kg", "1000 kg"],
+  },
+  {
+    id: "scooter",
+    nombre: "Scooters eléctricos",
+    detalle:
+      "Scooters urbanos y deportivos con batería extraíble, para moverse por la ciudad sin bencina.",
+    subcategorias: ["Urbano E1", "Sport E2", "Plus E3"],
+  },
+  {
+    id: "bicicleta",
+    nombre: "Bicicletas eléctricas",
+    detalle:
+      "Bicicletas con pedaleo asistido para ciudad, reparto y todo terreno, con batería extraíble.",
+    subcategorias: ["City", "Cargo", "Fat"],
+  },
+  {
+    id: "moto",
+    nombre: "Motos 49cc",
+    detalle:
+      "Motos bencineras de 49 cc, sin licencia especial, para trayectos más largos.",
+    subcategorias: ["Cub", "Trail"],
+  },
+];
 
 export type RepuestoCategoria =
   | "sistema-electrico"
