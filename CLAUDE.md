@@ -79,9 +79,15 @@ Landing + storefront for electric cargo trikes. **Next.js 15 (App Router) + Type
 - **Product & hero images** live in the Supabase Storage bucket `product-images` and are referenced
   by public URL — they are NOT in the repo or the deploy payload.
 - **This machine has no `node`, `npm`, or `gh`.** A standalone Node is fetched into the session
-  scratchpad and prepended to `PATH` for `npm install` / `npm run build`. There is no git remote.
-- **Deploy** is via the Vercel MCP `deploy_to_vercel` (inline files), team `proyecto29`, project
-  `orient-lion-chile`. You MUST pass `projectSettings: {"framework": "nextjs"}` or the build fails
-  with `STATIC_BUILD_NO_OUT_DIR`.
+  scratchpad and prepended to `PATH` for `npm install` / `npm run build` (past sessions leave a
+  reusable `node-v20.*-darwin-x64` under `/private/tmp/claude-*/.../scratchpad/`).
+- **Deploy** is via GitHub: `git commit` + `git push origin main` to
+  `joaquinphm-stack/orient-lion-chile`; the Vercel git integration auto-builds production at
+  `orient-lion-chile.vercel.app` (team `proyecto29`, project `orient-lion-chile`,
+  production branch `main`). Push auth is HTTPS + a `repo`-scoped PAT in the macOS keychain
+  (account `joaquinphm-stack`); no SSH keys. `vercel.json` pins `{"framework": "nextjs"}`, which
+  is what stops git builds from failing with `STATIC_BUILD_NO_OUT_DIR`. The inline
+  `deploy_to_vercel` MCP is a fallback only (the full source tree is too large to send reliably
+  in one call).
 - Running `npm run build` while `npm run dev` is active corrupts `.next`; stop dev and `rm -rf .next`
   first.
