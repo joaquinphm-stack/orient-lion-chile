@@ -2214,3 +2214,93 @@ body.ssj footer a[href*="wa.me"]{
   color: var(--ol-oro);
   text-shadow: 0 0 14px rgba(255, 85, 0, .6);
 }
+
+/* ======================================================
+   TIENDA (Shopify headless)
+   ====================================================== */
+.tienda-bar{
+  background: rgba(0,0,0,0.85);
+  border-bottom: 1px solid var(--border);
+}
+.tienda-bar-in{ display:flex; align-items:center; justify-content:space-between; padding: 14px 24px; }
+.tienda-bar-title{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--white);
+}
+
+.tienda-cart-empty{ color: var(--text-dim); font-size: 14px; }
+.tienda-cart-line{ display:flex; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--border); }
+.tienda-cart-line img{
+  width:64px; height:64px; object-fit:cover; border-radius:var(--radius-sm);
+  background: var(--surface-2); flex-shrink:0;
+}
+.tienda-cart-line-noimg{ width:64px; height:64px; border-radius:var(--radius-sm); background: var(--surface-2); flex-shrink:0; }
+.tienda-cart-line-info{ flex:1; display:flex; flex-direction:column; gap:2px; font-size:13.5px; min-width:0; }
+.tienda-cart-line-info strong{ color: var(--white); font-size:14px; }
+.tienda-cart-line-info span{ color: var(--text-dim); }
+.tienda-cart-line-qty{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.tienda-cart-line-qty button{
+  width:28px; height:28px; border-radius:999px; border:1px solid var(--border-strong);
+  background:none; color:var(--white); cursor:pointer; font-size:14px; line-height:1;
+}
+.tienda-cart-line-qty button:disabled{ opacity:.5; cursor:not-allowed; }
+.tienda-cart-line-qty span{ min-width:16px; text-align:center; color: var(--white); font-weight:600; }
+
+.tienda-cart-foot{ flex-direction:column; align-items:stretch; gap:12px; }
+.tienda-cart-total{ display:flex; justify-content:space-between; font-weight:700; color:var(--white); font-size:15px; }
+.tienda-cart-checkout{ justify-content:center; }
+.tienda-cart-checkout.is-disabled{ pointer-events:none; opacity:.5; }
+
+.tienda-back{
+  display:inline-flex; align-items:center; gap:6px;
+  color: var(--text-dim); font-size:13.5px; text-decoration:none; margin-bottom:24px;
+}
+.tienda-back:hover{ color: var(--white); }
+
+.tienda-detail{ padding: 40px 0 90px; }
+.tienda-detail-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:start; }
+.tienda-detail-media{
+  position:relative; aspect-ratio: 4 / 3;
+  background: var(--surface); border:1px solid var(--border); border-radius: var(--radius);
+  overflow:hidden;
+}
+.tienda-detail-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.tienda-detail-thumbs{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.tienda-detail-thumbs button{
+  width:64px; height:64px; padding:0; border:1px solid var(--border); border-radius: var(--radius-sm);
+  overflow:hidden; background: var(--surface-2); cursor:pointer;
+}
+.tienda-detail-thumbs button.is-active{ border-color: var(--white); }
+.tienda-detail-thumbs img{ width:100%; height:100%; object-fit:cover; }
+
+.tienda-detail-sub{
+  font-family: var(--font-display); font-weight:700; font-size:12px; letter-spacing:.06em;
+  text-transform:uppercase; color: var(--text-dim); margin-bottom:10px;
+}
+.tienda-detail-info h1{ font-size: clamp(26px, 3vw, 34px); margin-bottom:8px; }
+.tienda-detail-price{
+  font-family: var(--font-display); font-weight:700; font-size:30px; color: var(--white);
+  margin: 6px 0 22px;
+}
+.tienda-detail-price small{
+  font-family: var(--font-body); font-size:12.5px; color: var(--text-faint);
+  font-weight:500; display:block; margin-top:4px;
+}
+.tienda-color-row{ display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+.tienda-detail-specs{ margin-bottom:24px; }
+.tienda-qty{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.tienda-qty button{
+  width:36px; height:36px; border-radius:999px; border:1px solid var(--border-strong);
+  background:none; color:var(--white); font-size:16px; cursor:pointer;
+}
+.tienda-qty span{ min-width:24px; text-align:center; font-weight:600; color: var(--white); }
+.tienda-detail-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px; }
+.tienda-detail-desc{ color: var(--text-dim); font-size:14.5px; line-height:1.6; }
+.tienda-detail-desc p + p{ margin-top:10px; }
+.tienda-detail-desc ul{ margin-top:10px; padding-left:18px; }
+
+@media (max-width: 860px){
+  .tienda-detail-grid{ grid-template-columns: 1fr; gap:28px; }
+}
