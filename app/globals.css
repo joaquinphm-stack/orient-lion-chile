@@ -2235,6 +2235,46 @@ body.ssj footer a[href*="wa.me"]{
 }
 .tienda-back:hover{ color: var(--white); }
 
+/* ---- Ficha de producto (modal), catálogo de /modelos y home ----
+   Reutiliza las clases .tienda-detail-* de la ficha de /tienda para que
+   ambas fichas se vean iguales. */
+.product-modal-overlay{
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(20,12,4,.55);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 20px;
+  overflow-y: auto;
+}
+.product-modal{
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 980px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(20,12,4,.35);
+  cursor: auto;
+}
+.product-modal-close{
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 1;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 15px;
+  cursor: pointer;
+}
+.product-modal-grid{ padding: 32px; }
+@media (max-width: 720px){
+  .product-modal-overlay{ padding: 0; }
+  .product-modal{ border-radius: 0; min-height: 100vh; }
+  .product-modal-grid{ padding: 24px; }
+}
+
 .tienda-detail{ padding: 40px 0 90px; }
 .tienda-detail-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:start; }
 .tienda-detail-media{

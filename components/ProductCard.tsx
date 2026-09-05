@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatCLP, storageImg, waLink, type Product } from "@/lib/types";
+import ProductDetailModal from "./ProductDetailModal";
 
 function PlaceholderTrike({ tint }: { tint: string }) {
   return (
@@ -54,6 +55,7 @@ export default function ProductCard({
   );
   const [colorIdx, setColorIdx] = useState(defaultColorIdx);
   const [photoIdx, setPhotoIdx] = useState(0);
+  const [detailOpen, setDetailOpen] = useState(false);
 
   const activeColor = colores[colorIdx] ?? colores[0];
 
@@ -73,9 +75,11 @@ export default function ProductCard({
         (product.destacado ? " featured" : "") +
         (product.activo ? "" : " is-hidden")
       }
+      onClick={() => setDetailOpen(true)}
+      style={{ cursor: "pointer" }}
     >
       {isAdmin && (
-        <div className="card-admin-bar">
+        <div className="card-admin-bar" onClick={(e) => e.stopPropagation()}>
           <button type="button" onClick={onEdit} disabled={busy} title="Editar torito">
             ✎
           </button>
@@ -127,7 +131,7 @@ export default function ProductCard({
           )}
 
           {images.length > 1 && (
-            <div className="media-dots">
+            <div className="media-dots" onClick={(e) => e.stopPropagation()}>
               {images.map((_, i) => (
                 <button
                   key={i}
@@ -140,7 +144,7 @@ export default function ProductCard({
           )}
         </div>
 
-        <div className="color-swatches">
+        <div className="color-swatches" onClick={(e) => e.stopPropagation()}>
           <span className="swatch-label">Color</span>
           {colores.map((c, i) => (
             <button
@@ -187,10 +191,27 @@ export default function ProductCard({
           href={waLink(waText)}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
         >
           Cotizar este modelo
         </a>
       </div>
+
+      {detailOpen && (
+        <ProductDetailModal
+          product={product}
+          colores={colores}
+          colorIdx={colorIdx}
+          photoIdx={photoIdx}
+          images={images}
+          onSelectColor={(i) => {
+            setColorIdx(i);
+            setPhotoIdx(0);
+          }}
+          onSelectPhoto={setPhotoIdx}
+          onClose={() => setDetailOpen(false)}
+        />
+      )}
     </article>
   );
 }
