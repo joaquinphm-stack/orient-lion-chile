@@ -1660,6 +1660,38 @@ footer.site{
 .auth-alt{ margin-top: 20px; font-size: 13.5px; color: var(--text-dim); text-align:center; }
 .auth-alt a{ color: var(--white); font-weight: 600; }
 
+/* ---- Botones de Google / Facebook (login y registro) ---- */
+.oauth-buttons{ display:flex; flex-direction:column; gap: 10px; }
+.oauth-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--tap);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--white);
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.oauth-btn:hover{ border-color: var(--white); background: var(--surface); }
+.oauth-btn svg{ width: 18px; height: 18px; flex-shrink: 0; }
+.auth-divider{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
+.auth-divider::before,
+.auth-divider::after{ content:""; flex:1; height:1px; background: var(--border); }
+
 .page-wrap{ max-width: 900px; margin: 0 auto; padding: 64px 24px 96px; }
 .page-wrap h1{ font-size: clamp(26px,3vw,34px); margin-bottom: 8px; }
 .page-wrap .sub{ color: var(--text-dim); margin-bottom: 40px; }

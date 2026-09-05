@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import OAuthButtons from "@/components/OAuthButtons";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -37,6 +38,8 @@ export default function LoginForm() {
         <p className="sub">Entra a tu cuenta de Orient Lion.</p>
 
         {error && <div className="alert alert-err">{error}</div>}
+
+        <OAuthButtons />
 
         <form onSubmit={handleSubmit} className="stack">
           <div className="form-row" style={{ margin: 0 }}>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import OAuthButtons from "@/components/OAuthButtons";
 
 export default function RegistroForm() {
   const router = useRouter();
@@ -63,6 +64,8 @@ export default function RegistroForm() {
         <p className="sub">Regístrate para hacer seguimiento a tus cotizaciones.</p>
 
         {error && <div className="alert alert-err">{error}</div>}
+
+        <OAuthButtons />
 
         <form onSubmit={handleSubmit} className="stack">
           <div className="form-row" style={{ margin: 0 }}>
