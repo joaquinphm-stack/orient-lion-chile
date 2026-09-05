@@ -10,20 +10,20 @@
   --surface-2:   #131313;
   --border:      rgba(255,255,255,0.10);
   --border-strong: rgba(255,255,255,0.24);
-  --white:       #FFFFFF;
-  --text:        rgba(255,255,255,0.86);
-  --text-dim:    rgba(255,255,255,0.56);
-  --text-faint:  rgba(255,255,255,0.36);
+  --white:       #1E1608;
+  --text:        rgba(30,22,8,0.86);
+  --text-dim:    rgba(30,22,8,0.60);
+  --text-faint:  rgba(30,22,8,0.42);
   --accent:      #25D366;
   --accent-dark: #1FB958;
   --accent-soft: rgba(37,211,102,0.12);
-  --danger:      #F87171;
+  --danger:      #B3261E;
 
   /* Repuestos: chip de voltaje (azul técnico) + afordancia de edición admin */
-  --volt:        #8FB4F2;
-  --volt-soft:   rgba(143,180,242,0.12);
-  --volt-border: rgba(143,180,242,0.40);
-  --edit:        #F5B841;
+  --volt:        #2454B0;
+  --volt-soft:   rgba(36,84,176,0.10);
+  --volt-border: rgba(36,84,176,0.38);
+  --edit:        #B8720A;
 
   --font-display: 'Inter', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, sans-serif;
@@ -110,7 +110,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    HEADER
    ====================================================== */
 header.site{
-  background: rgba(0,0,0,0.85);
+  background:
+    radial-gradient(1100px 220px at 50% -120%, rgba(245,178,31,0.14), transparent 70%),
+    rgba(255,251,244,0.86);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: var(--white);
@@ -333,7 +335,7 @@ header.site{
   position:absolute;
   top: -20%; right: -10%;
   width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245,178,31,0.10) 0%, transparent 70%);
   pointer-events:none;
 }
 
@@ -453,7 +455,7 @@ header.site{
   left:50%; top:52%;
   width:100%; height:78%;
   transform:translate(-50%,-50%);
-  background: radial-gradient(circle at 50% 50%, rgba(150,170,255,0.12) 0%, rgba(255,255,255,0.05) 34%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(245,178,31,0.16) 0%, rgba(255,255,255,0.5) 34%, transparent 70%);
   filter: blur(10px);
   pointer-events:none;
 }
@@ -623,7 +625,7 @@ header.site{
 }
 .model-card.featured{
   border-color: var(--border-strong);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 1px rgba(245,178,31,0.35);
 }
 
 .featured-tag{
@@ -669,7 +671,7 @@ header.site{
   font-size: 11.5px;
   font-weight: 600;
   color: var(--text-dim);
-  background: rgba(255,255,255,0.06);
+  background: rgba(30,22,8,0.05);
   border: 1px solid var(--border);
   padding: 5px 12px;
   border-radius: 20px;
@@ -685,7 +687,7 @@ header.site{
   width: 7px; height: 7px;
   border-radius: 50%;
   border: none;
-  background: rgba(255,255,255,0.3);
+  background: rgba(30,22,8,0.22);
   cursor:pointer;
   padding:0;
 }
@@ -703,7 +705,7 @@ header.site{
 .swatch{
   width: 22px; height: 22px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.18);
+  border: 2px solid rgba(30,22,8,0.16);
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -712,7 +714,7 @@ header.site{
 .swatch:hover{ transform: scale(1.08); }
 .swatch.active{
   border-color: var(--white);
-  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(30,22,8,0.55);
 }
 
 .model-plate{
@@ -872,8 +874,8 @@ header.site{
   margin-bottom: 18px;
   border: 1px solid;
 }
-.alert-ok{ background: var(--accent-soft); border-color: var(--accent); color: #7CF0AC; }
-.alert-err{ background: rgba(248,113,113,.1); border-color: rgba(248,113,113,.5); color: #FCA5A5; }
+.alert-ok{ background: var(--accent-soft); border-color: var(--accent); color: #1B7A45; }
+.alert-err{ background: rgba(179,38,30,.08); border-color: rgba(179,38,30,.4); color: var(--danger); }
 
 /* ======================================================
    REPUESTOS  (mobile-first)
@@ -895,7 +897,7 @@ header.site{
   position: absolute;
   top: -24%; right: -8%;
   width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245,178,31,0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 .rep-hero-in{
@@ -1001,7 +1003,7 @@ header.site{
   width: 104%; height: 78%;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: rgba(150,170,255,.14);
+  background: rgba(245,178,31,.20);
   filter: blur(40px);
   animation: ol-glow-pulse 6s ease-in-out infinite;
   pointer-events: none;
@@ -1055,7 +1057,7 @@ header.site{
   transition: background .15s ease, border-color .15s ease, color .15s ease;
 }
 .rep-showcase-plates button.is-active{
-  background: rgba(255,255,255,.06);
+  background: rgba(30,22,8,.05);
   border-color: var(--border-strong);
   color: var(--white);
 }
@@ -1582,7 +1584,7 @@ footer.site{
 }
 .footer-grid a{ text-decoration:none; color: var(--white); font-weight: 500; }
 .footer-mark{ display:flex; justify-content:center; margin-bottom: 14px; }
-.footer-mark-img{ width: 60px; height: auto; mix-blend-mode: screen; }
+.footer-mark-img{ width: 60px; height: auto; }
 
 .float-wa{
   position: fixed;
@@ -2081,11 +2083,12 @@ footer.site{
     border: none;
     border-radius: 999px;
     padding: 0;
-    background: rgba(255,255,255,0.22);
+    background: rgba(30,22,8,0.18);
     cursor: pointer;
-    transition: background .15s ease, width .15s ease;
+    transform-origin: center;
+    transition: background .15s ease, transform .15s ease;
   }
-  .models-nav button[aria-current="true"]{ width: 40px; background: var(--white); }
+  .models-nav button[aria-current="true"]{ transform: scaleX(1.54); background: var(--white); }
 }
 
 /* Pantallas muy angostas (320–360px) */
@@ -2102,85 +2105,35 @@ footer.site{
 }
 
 /* ======================================================
-   MODO SUPER SAIYAJIN (SSJ / SSJ2)
-   Paleta de fuego del logo (reemplaza el verde WhatsApp) +
-   títulos en oro con resplandor + CTAs con pulso de ki.
+   MODO SUPER SAIYAJIN — VERSIÓN CLARA
+   Mismo logo y mismos colores de fuego (oro/naranja/carmesí)
+   como acento, sobre una paleta clara y cálida. Los textos y
+   glows en blanco puro (pensados para fondo negro) se quitan:
+   el texto vuelve a los tokens de tinta oscura de arriba, que
+   ya leen bien sobre este fondo claro.
    Siempre activo vía <body class="ssj"> en app/layout.tsx.
    ====================================================== */
 :root{
   --accent: #F5B21F;
   --accent-dark: #E0741A;
-  --accent-soft: rgba(245, 178, 31, 0.14);
-  --border: rgba(245, 178, 31, 0.16);
-  --border-strong: rgba(245, 178, 31, 0.36);
-  --surface: #0B0705;
-  --surface-2: #151009;
-  --bg: #000000;
-  --bg-alt: #050302;
+  --accent-soft: rgba(245, 178, 31, 0.16);
+  --border: rgba(40, 24, 6, 0.12);
+  --border-strong: rgba(40, 24, 6, 0.26);
+  --surface: #FFFFFF;
+  --surface-2: #FFF6EB;
+  --bg: #FFFBF5;
+  --bg-alt: #FFF2E1;
 
   --ol-carmesi: #C0261B;
   --ol-fuego: #FF5500;
-  --ol-oro: #FFCC00;
-  --ol-glow: 1;
+  --ol-oro: #B8790A;
+  --ol-glow: 0;
 }
 
-h1, h2, h3, .display{
-  color: var(--ol-oro);
-  transition: color .35s ease, text-shadow .35s ease;
-  text-shadow:
-    0 0 calc(18px * var(--ol-glow)) rgba(255, 85, 0, .75),
-    0 2px 0 rgba(192, 38, 27, .9),
-    0 0 calc(46px * var(--ol-glow)) rgba(255, 204, 0, .45);
-}
-
-/* "1000 kilos" del hero: blanco con el aura pulsante SSJ2 (igual que el nav), sin el glow dorado del título */
-body.ssj .hero h1 .faint{
-  color: #fff;
-  animation: olKiPulseWhite 2.6s ease-in-out infinite;
-}
-
-/* Eyebrow del hero ("Toritos eléctricos de carga · Chile"): mismo aura SSJ2 */
-body.ssj .hero-eyebrow{
-  color: #fff;
-  animation: olKiPulseWhite 2.6s ease-in-out infinite;
-}
-
-/* Párrafo lead del hero: mismo aura SSJ2 */
-body.ssj .hero p.lead{
-  color: #fff;
-  animation: olKiPulseWhite 2.6s ease-in-out infinite;
-}
-
-/* Hero de /modelos y /repuestos: mismo aura SSJ2 que el landing */
-body.ssj .rep-eyebrow,
-body.ssj .rep-hero-h1 .faint,
-body.ssj .rep-hero-lead{
-  color: #fff;
-  animation: olKiPulseWhite 2.6s ease-in-out infinite;
-}
-
-/* SSJ2: enlaces del header en blanco con aura pulsante */
-@keyframes olKiPulseWhite{
-  0%, 100%{ text-shadow: 0 0 10px rgba(255,255,255,.7), 0 0 26px rgba(255,255,255,.3); }
-  50%{ text-shadow: 0 0 18px rgba(255,255,255,.95), 0 0 46px rgba(255,255,255,.5); }
-}
-body.ssj .nav-links a,
-body.ssj .nav-right a:not(.nav-cta),
-body.ssj .nav-right .linklike{
-  color: #FFFFFF;
-  animation: olKiPulseWhite 2.6s ease-in-out infinite;
-}
-body.ssj .nav-links a:hover,
-body.ssj .nav-right a:not(.nav-cta):hover,
-body.ssj .nav-right .linklike:hover{
-  color: #FFFFFF;
-  animation-duration: 1s;
-}
-
-/* SSJ: CTAs de WhatsApp/acción en degradado oro→naranja con pulso de ki */
+/* SSJ: CTAs de WhatsApp/acción en degradado oro→naranja con halo suave */
 @keyframes olKiPulse{
-  0%, 100%{ box-shadow: 0 0 12px rgba(255,85,0,.55), 0 0 30px rgba(255,204,0,.25); }
-  50%{ box-shadow: 0 0 22px rgba(255,85,0,.85), 0 0 54px rgba(255,204,0,.45); }
+  0%, 100%{ box-shadow: 0 0 10px rgba(255,85,0,.35), 0 0 22px rgba(245,178,31,.20); }
+  50%{ box-shadow: 0 0 16px rgba(255,85,0,.5), 0 0 34px rgba(245,178,31,.3); }
 }
 body.ssj .btn-primary,
 body.ssj .form-submit,
@@ -2188,7 +2141,7 @@ body.ssj .nav-cta,
 body.ssj .float-wa{
   background: linear-gradient(180deg, #FFCC00, #FF5500);
   color: #1A0A00;
-  border-color: rgba(255, 204, 0, .5);
+  border-color: rgba(224, 116, 26, .5);
   text-shadow: 0 1px 0 rgba(255, 235, 150, .55);
   animation: olKiPulse 2.4s ease-in-out infinite;
 }
@@ -2203,23 +2156,22 @@ body.ssj .float-wa:hover{
 /* CTA ghost del hero ("Ver modelos y precios"): contorno oro, sin relleno */
 body.ssj .hero .btn-ghost{
   color: var(--ol-oro);
-  border-color: rgba(255, 204, 0, .55);
-  text-shadow: 0 0 14px rgba(255, 85, 0, .6);
-  animation: olKiPulse 3s ease-in-out infinite;
+  border-color: rgba(224, 116, 26, .45);
 }
 body.ssj .hero .btn-ghost:hover{ border-color: var(--ol-oro); }
 
-/* Enlace de WhatsApp del footer: solo brillo, sin píldora */
+/* Enlace de WhatsApp del footer: en oro, sin píldora */
 body.ssj footer a[href*="wa.me"]{
   color: var(--ol-oro);
-  text-shadow: 0 0 14px rgba(255, 85, 0, .6);
 }
 
 /* ======================================================
    TIENDA (Shopify headless)
    ====================================================== */
 .tienda-bar{
-  background: rgba(0,0,0,0.85);
+  background:
+    radial-gradient(1100px 220px at 50% -120%, rgba(245,178,31,0.14), transparent 70%),
+    rgba(255,251,244,0.86);
   border-bottom: 1px solid var(--border);
 }
 .tienda-bar-in{ display:flex; align-items:center; justify-content:space-between; padding: 14px 24px; }

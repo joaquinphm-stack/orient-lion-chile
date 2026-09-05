@@ -13,15 +13,15 @@ function PlaceholderTrike({ tint }: { tint: string }) {
       strokeWidth="1.4"
     >
       <rect className="tintable" x="8" y="50" width="150" height="70" rx="3" stroke={tint} />
-      <rect x="8" y="40" width="150" height="10" rx="2" fill="rgba(255,255,255,0.08)" />
-      <rect x="168" y="80" width="55" height="26" rx="5" stroke="rgba(255,255,255,0.5)" />
-      <circle cx="233" cy="128" r="20" stroke="rgba(255,255,255,0.5)" />
-      <circle cx="233" cy="128" r="8" stroke="rgba(255,255,255,0.35)" />
-      <circle cx="40" cy="128" r="20" stroke="rgba(255,255,255,0.5)" />
-      <circle cx="40" cy="128" r="8" stroke="rgba(255,255,255,0.35)" />
-      <circle cx="82" cy="128" r="20" stroke="rgba(255,255,255,0.5)" />
-      <circle cx="82" cy="128" r="8" stroke="rgba(255,255,255,0.35)" />
-      <rect x="40" y="118" width="193" height="8" fill="rgba(255,255,255,0.15)" stroke="none" />
+      <rect x="8" y="40" width="150" height="10" rx="2" fill="rgba(30,22,8,0.08)" />
+      <rect x="168" y="80" width="55" height="26" rx="5" stroke="rgba(30,22,8,0.45)" />
+      <circle cx="233" cy="128" r="20" stroke="rgba(30,22,8,0.45)" />
+      <circle cx="233" cy="128" r="8" stroke="rgba(30,22,8,0.3)" />
+      <circle cx="40" cy="128" r="20" stroke="rgba(30,22,8,0.45)" />
+      <circle cx="40" cy="128" r="8" stroke="rgba(30,22,8,0.3)" />
+      <circle cx="82" cy="128" r="20" stroke="rgba(30,22,8,0.45)" />
+      <circle cx="82" cy="128" r="8" stroke="rgba(30,22,8,0.3)" />
+      <rect x="40" y="118" width="193" height="8" fill="rgba(30,22,8,0.12)" stroke="none" />
     </svg>
   );
 }

@@ -83,7 +83,7 @@ export default function HeroShowcase() {
             onClick={() => pick(n)}
             style={{
               background: p.swatch,
-              boxShadow: n === i ? "0 0 0 2px rgba(255,255,255,.9)" : "none",
+              boxShadow: n === i ? "0 0 0 2px rgba(30,22,8,.85)" : "none",
               transform: `scale(${n === i ? 1.08 : 1})`,
             }}
           />
