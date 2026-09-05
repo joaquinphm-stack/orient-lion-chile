@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 import {
   PRODUCT_CATEGORIAS,
   REPUESTO_CATEGORIAS,
@@ -118,6 +119,8 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
           </button>
         </div>
       )}
+
+      <ThemeToggle />
 
       <button
         type="button"

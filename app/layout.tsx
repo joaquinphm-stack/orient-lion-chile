@@ -61,8 +61,16 @@ export default async function RootLayout({
       : null;
 
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
+        {/* Antes de pintar: aplica el tema oscuro guardado (o la preferencia
+            del sistema si es la primera visita) para evitar el flash de la
+            paleta clara. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("ol-theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}if(t==="dark")document.documentElement.classList.add("dark");}catch(e){}})();`,
+          }}
+        />
         {btnVars && <style>{btnVars}</style>}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

@@ -14,6 +14,10 @@
   --text:        rgba(30,22,8,0.86);
   --text-dim:    rgba(30,22,8,0.60);
   --text-faint:  rgba(30,22,8,0.60);
+  /* Tinta base en canales RGB (sin alpha), para tintes translúcidos que no
+     pueden usar los tokens de arriba directamente (rgba(var(--ink-rgb), X)).
+     El modo oscuro la redefine a un tono claro. */
+  --ink-rgb:     30,22,8;
   --accent:      #25D366;
   --accent-dark: #1FB958;
   --accent-soft: rgba(37,211,102,0.12);
@@ -672,7 +676,7 @@ header.site{
   font-size: 11.5px;
   font-weight: 600;
   color: var(--text-dim);
-  background: rgba(30,22,8,0.05);
+  background: rgba(var(--ink-rgb),0.05);
   border: 1px solid var(--border);
   padding: 5px 12px;
   border-radius: 20px;
@@ -688,7 +692,7 @@ header.site{
   width: 7px; height: 7px;
   border-radius: 50%;
   border: none;
-  background: rgba(30,22,8,0.22);
+  background: rgba(var(--ink-rgb),0.22);
   cursor:pointer;
   padding:0;
 }
@@ -706,7 +710,7 @@ header.site{
 .swatch{
   width: 22px; height: 22px;
   border-radius: 50%;
-  border: 2px solid rgba(30,22,8,0.16);
+  border: 2px solid rgba(var(--ink-rgb),0.16);
   cursor: pointer;
   padding: 0;
   position: relative;
@@ -715,7 +719,7 @@ header.site{
 .swatch:hover{ transform: scale(1.08); }
 .swatch.active{
   border-color: var(--white);
-  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(30,22,8,0.55);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(var(--ink-rgb),0.55);
 }
 
 .model-plate{
@@ -1082,7 +1086,7 @@ header.site{
   transition: background .15s ease, border-color .15s ease, color .15s ease;
 }
 .rep-showcase-plates button.is-active{
-  background: rgba(30,22,8,.05);
+  background: rgba(var(--ink-rgb),.05);
   border-color: var(--border-strong);
   color: var(--white);
 }
@@ -2117,7 +2121,7 @@ footer.site{
     border: none;
     border-radius: 999px;
     padding: 0;
-    background: rgba(30,22,8,0.18);
+    background: rgba(var(--ink-rgb),0.18);
     cursor: pointer;
     transform-origin: center;
     transition: background .15s ease, transform .15s ease;
@@ -2330,3 +2334,64 @@ body.ssj footer a[href*="wa.me"]{
 @media (max-width: 860px){
   .tienda-detail-grid{ grid-template-columns: 1fr; gap:28px; }
 }
+
+/* ======================================================
+   MODO OSCURO
+   Se activa agregando la clase "dark" al <html> (toggle en el
+   header; primera visita usa la preferencia del sistema). Mismo
+   acento de fuego (oro/naranja) sobre una base oscura en vez de
+   la cálida clara. Selector de clase en <html>: gana por
+   especificidad a los bloques :root de arriba sin depender del
+   orden en el archivo.
+   ====================================================== */
+html.dark{
+  --bg:            #0B0904;
+  --bg-alt:        #120E07;
+  --surface:       #17130A;
+  --surface-2:     #1E170C;
+  --border:        rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.22);
+  --white:         #F7F1E4;
+  --text:          rgba(247,241,228,0.88);
+  --text-dim:      rgba(247,241,228,0.64);
+  --text-faint:    rgba(247,241,228,0.50);
+  --ink-rgb:       247,241,228;
+  --danger:        #FF6B5B;
+}
+html.dark .alert-ok{ color: #6FE3A0; }
+
+/* La franja del header/tienda-bar usa un fondo cálido claro fijo (no un
+   token): en oscuro pasa a un translúcido sobre --bg. */
+html.dark header.site,
+html.dark .tienda-bar{
+  background:
+    radial-gradient(1100px 220px at 50% -120%, rgba(245,178,31,0.14), transparent 70%),
+    rgba(11,9,4,0.86);
+}
+
+/* Halo tras el torito del hero: el blanco (pensado para aclarar la foto
+   sobre el fondo claro) se retira en oscuro, donde el hueco de la foto ya
+   funciona sobre --bg sin ayuda. */
+html.dark .plate-card::before{
+  background: radial-gradient(circle at 50% 50%, rgba(245,178,31,0.20) 0%, transparent 70%);
+}
+
+/* ---- Botón de tema (sol/luna), en el header ---- */
+.theme-toggle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  min-width: var(--tap);
+  min-height: var(--tap);
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.theme-toggle:hover{ border-color: var(--border-strong); }
+.theme-toggle svg{ width: 18px; height: 18px; }
