@@ -19,7 +19,7 @@ import {
   type Spec,
 } from "@/lib/types";
 import ProductCard from "@/components/ProductCard";
-import ModelosHeroShowcase from "@/components/modelos/ModelosHeroShowcase";
+import HeroShowcase from "@/components/HeroShowcase";
 import WaGlyph from "@/components/WaGlyph";
 import { createClient } from "@/lib/supabase/client";
 import { PRODUCT_IMAGES_BUCKET } from "@/lib/supabase/config";
@@ -201,7 +201,7 @@ export default function ModelosPageClient({ products, textos, isAdmin }: Props) 
           </div>
 
           <div className="rep-hero-media">
-            <ModelosHeroShowcase />
+            <HeroShowcase />
           </div>
         </div>
       </section>
