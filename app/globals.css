@@ -1915,7 +1915,7 @@ footer.site{
      grilla; así el titular puede ir junto a la imagen mientras la bajada, los
      botones y las cifras siguen ocupando todo el ancho (en una columna de
      ~190px los botones y las estadísticas quedarían inutilizables). */
-  .hero{ padding: 26px 0 42px; }
+  .hero{ padding: 26px 0 20px; }
   .hero-grid{
     grid-template-columns: 1fr 56%;
     column-gap: 10px;
