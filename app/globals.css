@@ -1982,10 +1982,10 @@ footer.site{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 7px;
-    padding-top: 10px;
+    padding-top: 8px;
   }
-  .hero-stats .num{ font-size: 11px; }
-  .hero-stats .label{ font-size: 6px; margin-top: 3px; line-height: 1.35; }
+  .hero-stats .num{ font-size: 11px; line-height: 1.1; }
+  .hero-stats .label{ font-size: 6px; margin-top: 2px; line-height: 1.1; }
 
   /* ---------- SERVICIOS ----------
      Dos columnas compactas: apilados de a uno sumaban 1300px de scroll
