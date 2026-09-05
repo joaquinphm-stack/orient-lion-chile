@@ -150,7 +150,7 @@ export default async function Home() {
           <div className="services-grid">
             <div className="service-card">
               <div className="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="7" width="12" height="9" />
                   <path d="M14 10h4l3.5 3.5V16H14" />
                   <circle cx="7" cy="18.5" r="2" />
@@ -166,7 +166,7 @@ export default async function Home() {
 
             <div className="service-card">
               <div className="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2.5" y="5" width="19" height="13" rx="1.5" />
                   <path d="M2.5 9.5h19" />
                   <circle cx="7" cy="13.5" r="1.3" />
@@ -181,7 +181,7 @@ export default async function Home() {
 
             <div className="service-card">
               <div className="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 3h12v18l-6-3-6 3V3z" />
                   <path d="M9 9h6M9 12h6" />
                 </svg>
@@ -195,7 +195,7 @@ export default async function Home() {
 
             <div className="service-card">
               <div className="icon-tile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2l8 3.5v5c0 5.2-3.4 8.7-8 10.5-4.6-1.8-8-5.3-8-10.5v-5L12 2z" />
                   <path d="M8.5 12l2.3 2.3 4.7-5" />
                 </svg>

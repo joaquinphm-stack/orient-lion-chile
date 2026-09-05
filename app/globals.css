@@ -599,6 +599,7 @@ header.site{
   border-radius: 10px;
   background: var(--surface-2);
   border: 1px solid var(--border);
+  color: var(--white);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1980,11 +1981,11 @@ footer.site{
     grid-row: 4;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    padding-top: 20px;
+    gap: 7px;
+    padding-top: 10px;
   }
-  .hero-stats .num{ font-size: 22px; }
-  .hero-stats .label{ font-size: 11.5px; margin-top: 6px; line-height: 1.35; }
+  .hero-stats .num{ font-size: 11px; }
+  .hero-stats .label{ font-size: 6px; margin-top: 3px; line-height: 1.35; }
 
   /* ---------- SERVICIOS ----------
      Dos columnas compactas: apilados de a uno sumaban 1300px de scroll
@@ -2121,9 +2122,9 @@ footer.site{
   .models-grid,
   .home-rep-grid{ margin: 0 -18px; padding-left: 18px; padding-right: 18px; scroll-padding-left: 18px; }
   .hero-showcase-stage{ width: calc(100% + 18px); margin-right: -18px; }
-  .hero-stats{ gap: 8px; }
-  .hero-stats .num{ font-size: 19px; }
-  .hero-stats .label{ font-size: 10px; }
+  .hero-stats{ gap: 4px; }
+  .hero-stats .num{ font-size: 9.5px; }
+  .hero-stats .label{ font-size: 5px; }
   .models-grid > .model-card,
   .home-rep-grid > .repuesto-card{ flex-basis: 46%; }
 }
@@ -2164,9 +2165,9 @@ body.ssj .form-submit,
 body.ssj .nav-cta,
 body.ssj .float-wa{
   background: linear-gradient(180deg, #FFCC00, #FF5500);
-  color: #1A0A00;
+  color: #FFFFFF;
   border-color: rgba(224, 116, 26, .5);
-  text-shadow: 0 1px 0 rgba(255, 235, 150, .55);
+  text-shadow: 0 1px 2px rgba(120, 40, 0, .35);
   animation: olKiPulse 2.4s ease-in-out infinite;
 }
 body.ssj .btn-primary:hover,
