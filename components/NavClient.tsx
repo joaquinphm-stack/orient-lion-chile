@@ -109,22 +109,15 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
         )}
       </ul>
 
-      <div className="nav-right">
-        {isLogged ? (
-          <>
-            {isAdmin && <Link href="/admin">Admin</Link>}
-            <Link href="/perfil">{nombre ? nombre.split(" ")[0] : "Perfil"}</Link>
-            <button type="button" className="linklike" onClick={logout}>
-              Salir
-            </button>
-          </>
-        ) : (
-          <>
-            <Link href="/login">Iniciar sesión</Link>
-            <Link href="/registro">Crear cuenta</Link>
-          </>
-        )}
-      </div>
+      {isLogged && (
+        <div className="nav-right">
+          {isAdmin && <Link href="/admin">Admin</Link>}
+          <Link href="/perfil">{nombre ? nombre.split(" ")[0] : "Perfil"}</Link>
+          <button type="button" className="linklike" onClick={logout}>
+            Salir
+          </button>
+        </div>
+      )}
 
       <button
         type="button"
@@ -207,9 +200,9 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
               </Link>
             ),
           )}
-          <div className="mobile-menu-sep" />
-          {isLogged ? (
+          {isLogged && (
             <>
+              <div className="mobile-menu-sep" />
               {isAdmin && (
                 <Link href="/admin" onClick={() => setOpen(false)}>
                   Admin
@@ -221,15 +214,6 @@ export default function NavClient({ isLogged, isAdmin, nombre }: Props) {
               <button type="button" className="linklike" onClick={logout}>
                 Salir
               </button>
-            </>
-          ) : (
-            <>
-              <Link href="/login" onClick={() => setOpen(false)}>
-                Iniciar sesión
-              </Link>
-              <Link href="/registro" onClick={() => setOpen(false)}>
-                Crear cuenta
-              </Link>
             </>
           )}
           <a
