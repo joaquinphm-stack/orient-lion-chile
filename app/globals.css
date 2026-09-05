@@ -1879,6 +1879,10 @@ footer.site{
 @media (max-width: 720px){
   .form-cols{ grid-template-columns: 1fr; }
   .section{ padding: 52px 0; }
+  /* El catálogo es la sección que sigue al hero: su padding-top propio,
+     más el padding-bottom del hero, dejaban un salto vacío muy grande
+     entre las cifras del hero y "Elige tu capacidad de carga". */
+  #modelos{ padding-top: 16px; }
 
   .section-head{ margin-bottom: 26px; }
   .section-head h2{ font-size: 26px; }
