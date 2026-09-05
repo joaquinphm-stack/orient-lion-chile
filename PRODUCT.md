@@ -119,11 +119,14 @@ by the owner.
   held in the database.
 - Capacity tiers referenced in the UI: 500, 800, 1000 kg.
 - WhatsApp number: +56 9 9912 5871.
+- Physical store, confirmed real: San Diego 310, Santiago, Región Metropolitana,
+  Chile. Shown on the landing page (contact section, with an embedded map) and
+  in the footer.
 - After-sales the owner confirms is real: 1-year vehicle warranty, spare parts
   stocked for all models, repair / service support.
 - Not available and not to be fabricated: real customer testimonials or reviews,
   sales or unit counts, pricing history (live prices come from the database only),
-  press, case studies, showroom address, or company-history claims.
+  press, case studies, store hours, or company-history claims.
 
 ## Product Principles
 

@@ -5,7 +5,14 @@ import RepuestoCard from "@/components/RepuestoCard";
 import ContactForm from "@/components/ContactForm";
 import HeroShowcase from "@/components/HeroShowcase";
 import WaGlyph from "@/components/WaGlyph";
-import { waLink, type Product, type Repuesto } from "@/lib/types";
+import {
+  waLink,
+  STORE_ADDRESS,
+  STORE_MAPS_EMBED_URL,
+  STORE_MAPS_LINK,
+  type Product,
+  type Repuesto,
+} from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -323,6 +330,13 @@ export default async function Home() {
             <div className="contact-detail">
               <span className="dot" />
               <div>
+                <strong>Tienda física</strong>
+                <span>{STORE_ADDRESS}</span>
+              </div>
+            </div>
+            <div className="contact-detail">
+              <span className="dot" />
+              <div>
                 <strong>WhatsApp</strong>
                 <span>+56 9 9912 5871</span>
               </div>
@@ -353,6 +367,38 @@ export default async function Home() {
           </div>
 
           <ContactForm />
+        </div>
+
+        <div className="container">
+          <div className="visit-store">
+            <div className="visit-store-info">
+              <div className="kicker" style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--text-dim)", fontWeight: 600, fontSize: "12.5px", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
+                <span className="dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)" }} />
+                Tienda física
+              </div>
+              <h3>Visítanos en {STORE_ADDRESS.split(",")[0]}</h3>
+              <p>
+                Conoce los toritos en persona, resuelve tus dudas y cotiza cara
+                a cara. Te esperamos en {STORE_ADDRESS}.
+              </p>
+              <a
+                className="btn btn-ghost"
+                href={STORE_MAPS_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cómo llegar
+              </a>
+            </div>
+            <div className="visit-store-map">
+              <iframe
+                src={STORE_MAPS_EMBED_URL}
+                title={`Mapa: ${STORE_ADDRESS}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>

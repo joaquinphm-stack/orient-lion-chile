@@ -179,6 +179,13 @@ export function waLink(text?: string) {
   return text ? `${base}?text=${encodeURIComponent(text)}` : base;
 }
 
+/** Tienda física. Se usa en /contacto, footer y el mapa embebido. */
+export const STORE_ADDRESS = "San Diego 310, Santiago, Región Metropolitana, Chile";
+
+export const STORE_MAPS_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(STORE_ADDRESS)}&output=embed`;
+
+export const STORE_MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(STORE_ADDRESS)}`;
+
 export function formatCLP(value: number) {
   return "$" + Math.round(value).toLocaleString("es-CL");
 }
