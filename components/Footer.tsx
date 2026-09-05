@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="container">
         <div className="footer-mark">
           <Image
-            src="/logo-mark-fire.png"
+            src="/logo-mark-gold.png"
             alt=""
-            width={470}
-            height={450}
+            width={512}
+            height={512}
             className="footer-mark-img"
           />
         </div>
