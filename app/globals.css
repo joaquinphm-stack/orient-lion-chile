@@ -1500,6 +1500,11 @@ header.site{
    quita) y sangra hasta el borde derecho. */
 @media (max-width: 720px){
   .rep-hero{ padding: 26px 0 14px; }
+  /* Menos aire entre el hero, el buscador y el catálogo: en escritorio el
+     buscador respira más (36px / 44px de padding), pero en móvil, con el
+     hero ya compacto, se sentía como un salto vacío. */
+  .rep-searchbar{ margin-top: 14px; }
+  #catalogo{ padding-top: 16px; }
   .rep-hero-in{
     grid-template-columns: 1fr 56%;
     column-gap: 10px;
