@@ -4,7 +4,6 @@ import ModelosClient from "@/components/home/ModelosClient";
 import RepuestoCard from "@/components/RepuestoCard";
 import ContactForm from "@/components/ContactForm";
 import HeroShowcase from "@/components/HeroShowcase";
-import WaGlyph from "@/components/WaGlyph";
 import {
   waLink,
   STORE_ADDRESS,
@@ -106,14 +105,8 @@ export default async function Home() {
               <a className="btn btn-ghost" href="#modelos">
                 Ver modelos y precios
               </a>
-              <a
-                className="btn btn-primary"
-                href={waLink("Hola, quiero cotizar un torito eléctrico Orient Lion")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <WaGlyph />
-                Cotizar por WhatsApp
+              <a className="btn btn-primary" href="#tienda-fisica">
+                Sucursales
               </a>
             </div>
 
@@ -370,7 +363,7 @@ export default async function Home() {
         </div>
 
         <div className="container">
-          <div className="visit-store">
+          <div className="visit-store" id="tienda-fisica">
             <div className="visit-store-info">
               <div className="kicker" style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--text-dim)", fontWeight: 600, fontSize: "12.5px", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
                 <span className="dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)" }} />

@@ -882,6 +882,7 @@ header.site{
   margin-top: 56px;
   padding-top: 48px;
   border-top: 1px solid var(--border);
+  scroll-margin-top: 90px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 40px;
