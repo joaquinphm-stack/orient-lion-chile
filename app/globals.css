@@ -1499,7 +1499,7 @@ header.site{
    título y las cifras a lo ancho. La foto va sin marco (regla base ya lo
    quita) y sangra hasta el borde derecho. */
 @media (max-width: 720px){
-  .rep-hero{ padding: 26px 0 40px; }
+  .rep-hero{ padding: 26px 0 14px; }
   .rep-hero-in{
     grid-template-columns: 1fr 56%;
     column-gap: 10px;
@@ -1562,7 +1562,7 @@ header.site{
   .rep-hero .hero-stats{
     grid-column: 1 / -1;
     grid-row: 4;
-    margin-top: 18px;
+    margin-top: 6px;
   }
   .rep-showcase-stage{
     height: auto;
