@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
 const TITLE = "Modelos | Orient Lion Chile";
 const DESCRIPTION =
   "Catálogo Orient Lion: toritos eléctricos de carga de 500, 800 y 1000 kilos, scooters eléctricos, bicicletas eléctricas y motos 49cc. Elige color, paga contra entrega y recibe con factura.";
-const IMAGE =
-  "https://jozqjwkutcqeiereobun.supabase.co/storage/v1/object/public/product-images/site/hero-negro.webp";
+// PNG local (no WebP): algunos crawlers de previews no renderizan og:image en WebP.
+const IMAGE = "/logo-mark-gold.png";
 
 export const metadata: Metadata = {
   title: TITLE,

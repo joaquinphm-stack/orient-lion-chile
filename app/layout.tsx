@@ -11,8 +11,9 @@ const SITE_URL = "https://orient-lion-chile.vercel.app";
 const SITE_TITLE = "Orient Lion Chile | Toritos Eléctricos de Carga";
 const SITE_DESCRIPTION =
   "Toritos eléctricos de carga Orient Lion: hasta 1000 kilos, despacho a domicilio, pago contra entrega. Cotiza por WhatsApp.";
-const OG_IMAGE =
-  "https://jozqjwkutcqeiereobun.supabase.co/storage/v1/object/public/product-images/site/hero-negro.webp";
+// PNG local, no WebP: varios crawlers de previews (WhatsApp incluido) no
+// renderizan bien og:image en WebP y la tarjeta queda sin foto.
+const OG_IMAGE = "/logo-mark-gold.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: "/",
     siteName: "Orient Lion Chile",
-    images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
+    images: [{ url: OG_IMAGE, width: 512, height: 512 }],
     locale: "es_CL",
     type: "website",
   },

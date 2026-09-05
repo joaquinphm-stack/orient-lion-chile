@@ -8,7 +8,8 @@ export const dynamic = "force-dynamic";
 const TITLE = "Repuestos | Orient Lion Chile";
 const DESCRIPTION =
   "Repuestos para toritos eléctricos de carga Orient Lion: sistema eléctrico y propulsión, chasis y dirección, frenos y tracción, carrocería y luces. Filtra por modelo, año y voltaje o cotiza por WhatsApp.";
-const IMAGE = "/repuestos-hero/hero-bateria.webp";
+// PNG local (no WebP): algunos crawlers de previews no renderizan og:image en WebP.
+const IMAGE = "/logo-mark-gold.png";
 
 export const metadata: Metadata = {
   title: TITLE,

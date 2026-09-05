@@ -5,8 +5,8 @@ import { getTiendaProducts } from "@/lib/shopify/products";
 const TITLE = "Tienda | Orient Lion Chile";
 const DESCRIPTION =
   "Compra online los toritos eléctricos de carga Orient Lion: elige color, agrégalo al carrito y paga con checkout seguro.";
-const IMAGE =
-  "https://jozqjwkutcqeiereobun.supabase.co/storage/v1/object/public/product-images/site/hero-negro.webp";
+// PNG local (no WebP): algunos crawlers de previews no renderizan og:image en WebP.
+const IMAGE = "/logo-mark-gold.png";
 
 export const metadata: Metadata = {
   title: TITLE,
