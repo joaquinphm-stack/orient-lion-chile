@@ -5,10 +5,17 @@ import type { Product, TextoSitio } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
+const TITLE = "Modelos | Orient Lion Chile";
+const DESCRIPTION =
+  "Catálogo Orient Lion: toritos eléctricos de carga de 500, 800 y 1000 kilos, scooters eléctricos, bicicletas eléctricas y motos 49cc. Elige color, paga contra entrega y recibe con factura.";
+const IMAGE =
+  "https://jozqjwkutcqeiereobun.supabase.co/storage/v1/object/public/product-images/site/hero-negro.webp";
+
 export const metadata: Metadata = {
-  title: "Modelos | Orient Lion Chile",
-  description:
-    "Catálogo Orient Lion: toritos eléctricos de carga de 500, 800 y 1000 kilos, scooters eléctricos, bicicletas eléctricas y motos 49cc. Elige color, paga contra entrega y recibe con factura.",
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/modelos", images: [{ url: IMAGE }] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [IMAGE] },
 };
 
 export default async function ModelosPage() {

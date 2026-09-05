@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import ShopifyProductCard from "@/components/tienda/ShopifyProductCard";
 import { getTiendaProducts } from "@/lib/shopify/products";
 
+const TITLE = "Tienda | Orient Lion Chile";
+const DESCRIPTION =
+  "Compra online los toritos eléctricos de carga Orient Lion: elige color, agrégalo al carrito y paga con checkout seguro.";
+const IMAGE =
+  "https://jozqjwkutcqeiereobun.supabase.co/storage/v1/object/public/product-images/site/hero-negro.webp";
+
 export const metadata: Metadata = {
-  title: "Tienda | Orient Lion Chile",
-  description:
-    "Compra online los toritos eléctricos de carga Orient Lion: elige color, agrégalo al carrito y paga con checkout seguro.",
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/tienda", images: [{ url: IMAGE }] },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [IMAGE] },
 };
 
 export const revalidate = 120;
